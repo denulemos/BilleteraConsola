@@ -11,7 +11,7 @@ namespace BilleteraConsole.Clases
     {
         private string alias { get; set; }
         private string nombre{ get; set; }
-    private string apellido { get; set; }
+        private string apellido { get; set; }
         private string mail { get; set; }
         private double saldo { get; set; }
         private string password { get; set; }
@@ -28,12 +28,25 @@ namespace BilleteraConsole.Clases
             this.movimientos = new ArrayList();
         }
 
+        private bool validarMonto(double monto)
+        {
+            return (monto >= 0);
+        }
         public void addMovimiento (double monto, TipoMov tipo)
         {
             var fecha = DateTime.Now; //Toma la fecha actual
+            if (!validarMonto(monto))
+            {
+                Console.WriteLine("Monto no valido");
+                
+            }
+            else
+            {
             Movimiento movimiento = new Movimiento(monto, fecha, tipo);
-            movimientos.Add(movimiento);
-            Console.WriteLine("Movimiento agregado OK");
+                        movimientos.Add(movimiento);
+                        Console.WriteLine("Movimiento agregado OK");
+            }
+            
             
         }
 
