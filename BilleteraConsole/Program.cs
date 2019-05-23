@@ -1,3 +1,4 @@
+using BilleteraConsole.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,14 @@ namespace BilleteraConsole
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            User user = new User("DenuLemos", "Denu", "Lemos", "denu.a.lemos@gmail.com", 10000, "holi");
+            user.addMovimiento(100, TipoMov.deposito);
+            user.addMovimiento(200, TipoMov.retiro);
+            user.addMovimiento(300, TipoMov.retiro);
+            user.verMovimientos();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            Console.WriteLine("Apreta enter para salir");
+            Console.ReadLine(); //Para prevenir que la consola se cierre sola. 
         }
     }
 }
